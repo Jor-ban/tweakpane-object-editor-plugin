@@ -59,3 +59,96 @@
 		top: 50%;
 	}
 }
+
+.tp-object-editorv {
+	color: white;
+	display: flex;
+
+	&_button {
+		height: 13px;
+		width: 13px;
+		background: transparent;
+		border: none;
+		padding: 0;
+		color: white;
+		cursor: pointer;
+	}
+
+	&_inner {
+		display: flex;
+		align-items: center;
+		max-width: calc(100% - 13px);
+		overflow-x: hidden;
+		overflow-y: hidden;
+
+		&_line {
+			display: inline-block;
+		}
+
+		&_brace {
+			display: inline-block;
+			height: 13px;
+			width: 7px;
+		}
+
+		&_content {
+			display: flex;
+			height: 13px;
+			width: calc(100% - 7px * 2);
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		&_key {
+			color: #b6b6b6;
+		}
+	}
+
+	&_opened {
+		& > .tp-object-editorv_inner > .tp-object-editorv_inner_content > .tp-object-editorv_inner_line {
+			display: block;
+		}
+		& > .tp-object-editorv_inner > .tp-object-editorv_inner_brace {
+			display: block;
+		}
+		& > .tp-object-editorv_inner {
+			display: block;
+			width: max-content;
+		}
+		& > .tp-object-editorv_inner > .tp-object-editorv_inner_content {
+			display: block;
+			padding-left: 5px;
+			height: max-content;
+			width: max-content;
+		}
+	}
+
+	&_string {
+		color: #a4573a;
+		&::before, &::after {
+			content: "'";
+			display: inline-block;
+		}
+	}
+
+	&_number {
+		color: #0080d0;
+	}
+
+	&_function {
+		color: #076937;
+	}
+
+	&_boolean {
+		color: #4665d3;
+	}
+
+	&_array {
+		display: inline-flex;
+
+		&.tp-object-editorv_opened {
+			display: inline;
+		}
+	}
+}
