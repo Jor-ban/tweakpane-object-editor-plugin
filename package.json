@@ -1,18 +1,19 @@
 {
-  "name": "tweakpane-plugin-template",
-  "version": "0.0.0",
-  "description": "Plugin template for Tweakpane",
-  "main": "dist/tweakpane-plugin-template.js",
+  "name": "tweakpane-object-editor-plugin",
+  "version": "0.2.0",
+  "description": "Object editor for Tweakpane",
+  "main": "dist/tweakpane-object-editor-plugin.js",
   "type": "module",
   "types": "dist/types/index.d.ts",
-  "author": "cocopon",
+  "author": "https://github.com/Jor-ban",
+  "repository": "https://github.com/Jor-ban/tweakpane-object-editor-plugin",
+  "issues": "https://github.com/Jor-ban/tweakpane-object-editor-plugin/issues",
   "license": "MIT",
   "files": [
     "dist"
   ],
   "scripts": {
     "prepare": "run-s clean build",
-    "prepublishOnly": "npm test",
     "start": "run-p watch server",
     "test": "eslint --ext .ts \"src/**/*.ts\"",
     "assets": "run-s clean build assets:version assets:zip",

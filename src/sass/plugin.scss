@@ -24,7 +24,7 @@
 		color: tp.cssVar('input-fg');
 
 		bottom: 2px;
-		font-size: 0.9em;
+		font-size: 16px;
 		line-height: 0.9;
 		opacity: 0.5;
 		position: absolute;
@@ -62,93 +62,68 @@
 
 .tp-object-editorv {
 	color: white;
-	display: flex;
+	display: inline;
 
-	&_button {
-		height: 13px;
-		width: 13px;
+	.tp-tabv_c, .tp-fldv_c {
+		border-left: none;
+	}
+
+	.list-icon {
+		height: 16px;
+		margin: -2px 0 -2px 0;
+	}
+
+	&_logs_close-brace {
+		padding-left: 10px;
+	}
+
+	&_logs_field-key {
+		color: rgba(211, 164, 183, 0.99);
+	}
+
+	&_logs_collapsed-key {
+		color: rgba(193, 193, 193, 0.99);
+		font-style: italic;
+	}
+
+	&_logs_field-value-string {
+		color: rgba(237, 143, 109, 0.99);
+	}
+
+	&_logs_field-value-null {
+		color: rgba(180, 180, 180, 0.99);
+		font-style: italic;
+	}
+
+	&_logs_field-value-number, &_logs_field-value-boolean {
+		color: rgba(156, 215, 255, 0.99);
+	}
+
+	&_logs-field-value-function {
+		color: rgba(156, 215, 255, 0.99);
+		font-style: italic;
+	}
+
+	&_logs_data-area {
+		display: block;
+		padding-left: 14px;
+	}
+
+	&_logs_first-object {
+		padding-left: 0;
+	}
+
+	&_expandable-btn, button {
 		background: transparent;
 		border: none;
-		padding: 0;
 		color: white;
 		cursor: pointer;
+		padding: 0;
+		font-size: 10px;
 	}
 
-	&_inner {
-		display: flex;
-		align-items: center;
-		max-width: calc(100% - 13px);
-		overflow-x: hidden;
-		overflow-y: hidden;
-
-		&_line {
-			display: inline-block;
-		}
-
-		&_brace {
-			display: inline-block;
-			height: 13px;
-			width: 7px;
-		}
-
-		&_content {
-			display: flex;
-			height: 13px;
-			width: calc(100% - 7px * 2);
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-		}
-
-		&_key {
-			color: #b6b6b6;
-		}
-	}
-
-	&_opened {
-		& > .tp-object-editorv_inner > .tp-object-editorv_inner_content > .tp-object-editorv_inner_line {
-			display: block;
-		}
-		& > .tp-object-editorv_inner > .tp-object-editorv_inner_brace {
-			display: block;
-		}
-		& > .tp-object-editorv_inner {
-			display: block;
-			width: max-content;
-		}
-		& > .tp-object-editorv_inner > .tp-object-editorv_inner_content {
-			display: block;
-			padding-left: 5px;
-			height: max-content;
-			width: max-content;
-		}
-	}
-
-	&_string {
-		color: #a4573a;
-		&::before, &::after {
-			content: "'";
-			display: inline-block;
-		}
-	}
-
-	&_number {
-		color: #0080d0;
-	}
-
-	&_function {
-		color: #076937;
-	}
-
-	&_boolean {
-		color: #4665d3;
-	}
-
-	&_array {
-		display: inline-flex;
-
-		&.tp-object-editorv_opened {
-			display: inline;
-		}
+	&_button-opened {
+		display: inline;
+		gap: 5px;
 	}
 }

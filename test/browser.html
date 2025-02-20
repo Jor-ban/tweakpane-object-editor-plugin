@@ -7,29 +7,36 @@
 <body>
 	<script type="module">
 		import {Pane} from '../node_modules/tweakpane/dist/tweakpane.min.js';
-		import * as ObjectEditorPlugin from '../dist/tweakpane-plugin-template.js';
+		import * as ObjectEditorPlugin from '../dist/tweakpane-object-editor-plugin.js';
 
-		const params = {
-			prop: {
-				a: 'bruh',
-				b: 1,
-				sayHello: function() {
-					console.log('Hello');
-				},
-				isAuthenticated: false,
-				params: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+		const parent = {
+			a: 'bruh',
+			b: 1,
+			sayHello: function() {
+				console.log('Hello');
 			},
-		};
+			isAuthenticated: false,
+			params: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+			child: {
+				parent: null
+			}
+		}
+
+		setTimeout(() => {
+			parent.child.parent = parent;
+		});
+
+		const params = { parent };
 
 		const pane = new Pane();
 		// Register plugin
 		pane.registerPlugin(ObjectEditorPlugin);
 
 		// TODO: Update parameters for your plugin
-		pane.addBinding(params, 'prop', {
+		pane.addBinding(params, 'parent', {
 			view: 'object-editor',
 		}).on('change', (ev) => {
-			console.log(ev.value);
+			console.log(ev);
 		});
 
 		window.pane = pane;

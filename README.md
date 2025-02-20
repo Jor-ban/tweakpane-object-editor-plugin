@@ -1,82 +1,43 @@
-# Tweakpane plugin template
-Plugin template of an input binding for [Tweakpane][tweakpane].
-
-
-# For plugin developers
-TODO: Delete this section before publishing your plugin.
-
-
-## Quick start
-- Install dependencies:
-  ```
-  % npm install
-  ```
-- Build source codes and watch changes:
-  ```
-  % npm start
-  ```
-- Open `test/browser.html` to see the result.
-
-
-## File structure
-```
-|- src
-|  |- sass ............ Plugin CSS
-|  |- index.ts ........ Entrypoint
-|  |- plugin.ts ....... Plugin
-|  |- controller.ts ... Controller for the custom view
-|  `- view.ts ......... Custom view
-|- dist ............... Compiled files
-`- test
-   `- browser.html .... Plugin labo
-```
-
-
-## Version compatibility
-
-| Tweakpane | plugin-template |
-| --------- | --------------- |
-| 4.x       | [main](https://github.com/tweakpane/plugin-template/tree/main) |
-| 3.x       | [v3](https://github.com/tweakpane/plugin-template/tree/v3) |
-
-
-# For plugin users
-
+# Tweakpane Object Editor Plugin
+Object editor plugin for [Tweakpane][tweakpane].
 
 ## Installation
-
-
-### Browser
-```html
-<script type="module">
-  import {Pane} as Tweakpane from './tweakpane.min.js';
-  import * as TweakpaneTemplatePlugin from './tweakpane-plugin-template.min.js';
-
-  const pane = new Pane();
-  pane.registerPlugin(TweakpaneTemplatePlugin);
-</script>
-```
-
-
-### Package
-```js
-import {Pane} from 'tweakpane';
-import * as TemplatePlugin from 'tweakpane-plugin-template';
-
-const pane = new Pane();
-pane.registerPlugin(TemplatePlugin);
+```shell
+$ npm install tweakpane-object-editor-plugin
 ```
 
 
 ## Usage
 ```js
-const params = {
-  prop: 3,
-};
+import {Pane} from 'tweakpane';
+import * as ObjectEditorPlugin from 'tweakpane-object-editor-plugin';
+
+const parent = {
+  a: 'bruh',
+  b: 1,
+  sayHello: function() {
+    console.log('Hello');
+  },
+  isAuthenticated: false,
+  params: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+  child: {
+    parent: null
+  }
+}
+
+setTimeout(() => {
+  parent.child.parent = parent;
+});
+
+const params = { parent };
+
+const pane = new Pane();
+// Register plugin
+pane.registerPlugin(ObjectEditorPlugin);
 
 // TODO: Update parameters for your plugin
-pane.addInput(params, 'prop', {
-  view: 'dots',
+pane.addBinding(params, 'parent', {
+  view: 'object-editor',
 }).on('change', (ev) => {
   console.log(ev.value);
 });
