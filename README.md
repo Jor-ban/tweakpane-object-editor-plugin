@@ -1,6 +1,6 @@
 # Tweakpane Object Editor Plugin
 Object editor plugin for [Tweakpane][tweakpane].
-
+#tweakpane
 ## Installation
 ```shell
 $ npm install tweakpane-object-editor-plugin
